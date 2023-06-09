@@ -9,5 +9,7 @@ Use Password reset functionality on the Login page to send email for password re
 
 In you profile page upload your picture and edit your info. When you select your photo click on save settings to upload it.<br>
 
-Unit test command: npm run test
+Unit test command: npm run test<br>
+
+API documentation: https://documenter.getpostman.com/view/14588037/2s93sc3XpN
 
