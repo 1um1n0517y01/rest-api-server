@@ -1,0 +1,10 @@
+extends base
+
+block content 
+  main.main 
+      div.heading-secondary-page-heading.ma-bt-xlg
+        if user
+          h3 Welcome, #{user.name}!
+        else
+          h3 Sign in or Log in
+    
