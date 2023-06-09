@@ -3,7 +3,7 @@
 Live: https://rest-api-server-production.up.railway.app/
 
 *Usage:* <br>
-Signup with your Name, email and Password.<br>
+Signup with your Name, Email and Password. (You can use mailsac.com if you dont want to use your own email)<br>
 Use Login page to login.
 Use Password reset functionalityy on the Login page to send email for password reset.<br>
 
