@@ -28,11 +28,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Implement CORS
 app.use(cors());
-// Access-Control-Allow-Origin *
-// api.natours.com, front-end natours.com
-// app.use(cors({
-//   origin: 'https://www.natours.com'
-// }))
 
 // Implement CORS for all methods (patch, delete...)
 app.options('*', cors());
