@@ -117,18 +117,7 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Prevent parameter pollution
-app.use(
-  hpp({
-    whitelist: [
-      'duration',
-      'ratingsAverage',
-      'ratingsQuantity',
-      'maxGroupSize',
-      'difficulty',
-      'price',
-    ],
-  })
-);
+app.use(hpp());
 
 // Compress the text sent to the clients
 app.use(compression());
