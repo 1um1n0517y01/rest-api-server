@@ -48,8 +48,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 const scriptSrcUrls = [
   'https://unpkg.com/',
   'https://tile.openstreetmap.org',
-  'https://js.stripe.com',
-  'https://m.stripe.network',
   'https://*.cloudflare.com',
 ];
 const styleSrcUrls = [
@@ -60,7 +58,6 @@ const styleSrcUrls = [
 const connectSrcUrls = [
   'https://unpkg.com',
   'https://tile.openstreetmap.org',
-  'https://*.stripe.com',
   'https://bundle.js:*',
   'ws://127.0.0.1:*/',
 ];
@@ -73,10 +70,10 @@ app.use(
       baseUri: ["'self'"],
       fontSrc: ["'self'", ...fontSrcUrls],
       scriptSrc: ["'self'", 'https:', 'http:', 'blob:', ...scriptSrcUrls],
-      frameSrc: ["'self'", 'https://js.stripe.com'],
+      frameSrc: ["'self'"],
       objectSrc: ["'none'"],
       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-      workerSrc: ["'self'", 'blob:', 'https://m.stripe.network'],
+      workerSrc: ["'self'", 'blob:'],
       childSrc: ["'self'", 'blob:'],
       imgSrc: ["'self'", 'blob:', 'data:', 'https:'],
       formAction: ["'self'"],
@@ -122,13 +119,6 @@ app.use(hpp());
 // Compress the text sent to the clients
 app.use(compression());
 
-// Test middleware
-app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
-  // console.log(req.cookies);
-  next();
-});
-
 // ROUTES
 
 // Server-side rendering routes
@@ -139,10 +129,6 @@ app.use('/api/v1/users', userRouter);
 
 // Handling Unhandled Routes
 app.all('*', (req, res, next) => {
-  // const err = new Error(`Can't find ${req.originalUrl} on this server!`);
-  // err.status = 'fail';
-  // err.statusCode = 404;
-
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
